@@ -34,3 +34,9 @@ class Event:
         for func in self.event_list[name]:
             func(**kwargs)
 
+    @classmethod
+    def remove_all(self, name:str):
+        """
+        Remove all events from the chain by name. 
+        """
+        self.event_list[name].clear()
