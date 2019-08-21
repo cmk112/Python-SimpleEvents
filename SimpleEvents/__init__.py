@@ -6,6 +6,7 @@ class Event:
     METHODS:
     called(self, name:str) - used with decorator to register Event.
     call(self, name:str, **kwargs) - used to call the function (named by decorator call)
+    remove_all(self, name:str)
     """
 
     event_list = {}
@@ -40,3 +41,10 @@ class Event:
         Remove all events from the chain by name. 
         """
         self.event_list[name].clear()
+
+    @classmethod
+    def remove(self, name:str, func):
+        """
+        Remove one function from event list by name.
+        """
+        self.event_list[name].remove(func)
